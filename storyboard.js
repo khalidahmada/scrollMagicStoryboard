@@ -21,21 +21,79 @@
 })(this, function() {
         // static function
         var fn = function() {};
-        return {
+        var _helper = {
+        	toObject : function(str){
+        		var item = str.split(',');
+        		var _obj  = {};
+        		if(item.length){
+	        		for(var i = 0 ; i< item.length;i++){
+	        			var sec = item[i].split(':');
+	        			_obj[sec[0]] = sec[1];
+	        		}
+        		}else{
+        			var sec = item.split(':');
+        			if(sec.length){
+        				_obj[sec[0]] = sec[1];
+        			}
+        		}
 
-        	function(trigger , tweensObj){
+        		return _obj;
+        	}
+        }
+        var obj = {	
+        	/*
+        	* This function to using animating in attributes data with selector
+        	* as first param
+        	**/ 
+        	fromElements : function(select , controller , options){
+        		var items = document.querySelectorAll(select);
+        		if(items && items.length){
+        			for(var i=0;i<items.length;i++){
+        				var item = items[i],
+        					ops = {},
+        					trigger  = item.getAttribute('data-dz-trigger'),
+        					tween  = item.getAttribute('data-dz-tween'),
+        					set  = item.getAttribute('data-dz-set'),
+        					s  = item,
+        					time = item.getAttribute('data-dz-time'),
+        					method = item.getAttribute('data-dz-method'),
+        					offset = item.getAttribute('data-dz-offset'),
+        					duration = item.getAttribute('data-dz-duration');
+
+
+        					obj.add(trigger , [{
+								tween : {
+									m : method || 'to',
+									sep : true,
+									set : _helper.toObject(set || ''),
+									s : s,
+									t : time || 1 ,
+									a : _helper.toObject(tween || ''),
+									offset : offset,
+									duration : duration,
+								},
+        					}] , controller , options);
+
+        			}
+        		}
+
+        		return obj;
+        	},
+        	add : function(trigger , tweensObj , controller ,options ){
         		// define Controller
         		// and trigger
-				this.controller = new ScrollMagic.Controller();
+				this.controller = controller;
 				this.trigger = trigger;
 				this.tweens = tweensObj;
 				// Entry point
 				this.init = function(){
-					this.controller = new ScrollMagic.Controller();
+
+					
+
+					this.controller = controller;
 					
 					// Read Tweens
 					var tweens = this.tweens,
-						controller  = this.controller,
 						ln = tweens.length;
 
 					for(var i = 0 ; i < ln ; i++){
@@ -50,6 +108,8 @@
 						
 						// if extra is defined that men the 
 						var extra = itm.extra != undefined ? itm.extra : undefined;
+
+
 						var twen = TweenMax[itm.m](select, itm.t , itm.a , extra);
 
 						// set defaul setting on item on before proceed 
@@ -66,22 +126,38 @@
 								/*
 								* Return the Scene of ScrollMagic
 								**/
-								new ScrollMagic.Scene({
+
+								var ops = {
 									triggerElement : this.trigger,
-									duration:  tweens[i].duration,
-									offset:  tweens[i].offset,
-									reverse : ( tweens[i].reverse ? true : false ),
-								})
+									duration:  itm.duration,
+									//reverse : ( tweens[i].reverse ? true : false ),
+								};
+
+								if(itm.offset){
+									ops.offset = itm.offset;
+								}
+
+								var scene = new ScrollMagic.Scene(ops)
 								.setTween(twen)
-								.addTo(controller)
+
+								//.addIndicators({name: " (duration: )"}) 
+								.addTo(controller);
 								
+								if(options && options.setPin){
+									scene.setPin(options.setPin);
+								}
+
+
+								//return this;
 							}
 					} 
 				}
 				// init configs
 				this.init();
+
+				return obj;
 			}
 
         }
-}
-module.exports = CompetenceBox;
+        return obj;
+})
