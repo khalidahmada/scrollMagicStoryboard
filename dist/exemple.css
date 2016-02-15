@@ -1,0 +1,34 @@
+body{
+	background:#25242f;
+	color:#ffffff;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1 , span{
+	font-size: 188px;
+	text-align: center;
+	display: block;
+	font-weight: bold;
+}
+.dz-color{
+	color:#00ffff;
+}
+p{
+	font-size: 80px;
+}
+
+ul{
+	list-style: none;
+}
+li{
+	display: :inline-block;
+	margin-left: 20px;
+	font-size : 100px;
+	text-align: center;
+
+}
+
+li  a , li a:visited{
+	color:white;
+	text-decoration: none;
+}

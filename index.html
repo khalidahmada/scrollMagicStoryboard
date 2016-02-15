@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ScrollMagic Story board || Example</title>
+	<link rel="stylesheet" type="text/css" href="dist/exemple.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<section>
+
+	<span class="h1">Welcome</span>
+	<span class="h2">To</span>
+	<span class='h3 dz-color'>Digitz Lab72</span>
+	<span class='h4'>We</span>
+	<span class='h5'>Love</span>
+	<span class='h6'>JavaScript</span>
+	<span class='h7'>Follow us </span>
+	<span class='h8'>
+		On
+	</span>
+	<ul class='h9'>
+		<li><a href="#">twitter</a></li>
+		<li><a href="#">github</a></li>
+		<li><a href="#">linkedin</a></li>
+		<li><a href="#">facebook</a></li>
+	</ul>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.min.js"></script>
+
+<script type="text/javascript" src="dist/storyboard.js"></script>
+
+<script type="text/javascript">
+
+var controller = new ScrollMagic.Controller();
+var ops = {setPen : 'body'};
+	Storyboard
+		.add('section',[
+			{
+				tween : {
+					m : 'to',
+					set : { position:'relative'},
+					s : '.h1',
+					t : 2 ,
+					a : {
+						left : '-100%',
+						opcity : 0,
+					},
+					offset :340 ,
+					duration : 100,
+				}
+			}
+		] , controller , ops)
+		.add('section' , [{
+				tween : {
+					m : 'to',
+					set : { position:'relative' , opcity : 0 , rotation  : -90 , left : '-100%'},
+					s : '.h2',
+					t : 2 ,
+					a : {
+						left : 0,
+						opcity : 1,
+					},
+					offset :350 ,
+					duration : 30,
+				},
+		}],controller , ops)
+
+		.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h2',
+					t : 2 ,
+					a : {
+						rotation : 0
+					},
+					offset :390 ,
+					duration : 60,
+				},
+		}],controller , ops)
+
+
+		.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h3',
+					set : {position : 'relative' , scale : .4 ,opacity : 0 , y : -200},
+					t : 2 ,
+					a : {
+						scale : 1,
+						scale : 1,
+						opacity : 1 ,
+						y : 0,
+					},
+					offset :370 ,
+					duration : 10,
+				},
+		}],controller , ops)
+
+		.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h3',
+					t : 2 ,
+					a : {
+						scale:.4,
+					},
+					offset :390 ,
+					duration : 30,
+				},
+		}],controller , ops)
+
+
+		.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h3',
+					t : 2 ,
+					a : {
+						rotation:90,
+					},
+					offset :430 ,
+					duration : 70,
+				},
+		}],controller , ops)
+
+
+			.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h3',
+					t : 2 ,
+					a : {
+						left : '40%',
+						scale : .3,
+
+					},
+					offset :450 ,
+					duration : 70,
+				},
+		}],controller , ops)
+
+
+
+		.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h4',
+					set : {opacity : 0 , y : -300},
+					t : 2 ,
+					a : {
+						opacity : 1,
+						y : -200,
+					},
+					offset :600 ,
+					duration : 100,
+					extra : .2,
+				},
+		}],controller , ops)
+
+			.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h5',
+					set : {opacity : 0 , scale : 3 , position :'relative'},
+					t : 2 ,
+					a : {
+						y:-300,
+						opacity : 1,
+						scale : 1,
+					},
+					offset :790 ,
+					duration : 100,
+					extra : .2,
+				},
+		}],controller , ops)
+
+			.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h6',
+					set : {opacity : 0 , scale : .3 , position :'relative' , y : -360},
+					t : 2 ,
+					a : {
+						opacity : 1,
+						scale : 1,
+					},
+					offset :1100 ,
+					duration : 380,
+				},
+		}],controller , ops)
+
+
+			.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h7',
+					set : {opacity : 0 , position :'relative' , scale : 3 , y : -330},
+					t : 2 ,
+					a : {
+						opacity : 1 ,
+						left : 0,
+						scale : .8,
+					},
+					offset :1300 ,
+					duration : 380,
+				},
+		}],controller , ops)
+
+			.add('section' , [{
+				tween : {
+					m : 'to',
+					s : '.h8',
+					set : {opacity : 0 , position :'relative' , y : -430},
+					t : 2 ,
+					a : {
+						opacity : 1 ,
+						y : -300,
+					},
+					offset :1500 ,
+					duration : 50,
+				},
+		}],controller , ops)
+
+
+			.add('section' , [{
+				tween : {
+					m : 'staggerTo',
+					s : '.h9 li',
+					set : {opacity : 0 , position :'relative' , y : 100 , scale : .5},
+					t : 2 ,
+					a : {
+						opacity : 1 ,
+						y : 0,
+						scale : 1,
+					},
+					extra:.5,
+					offset :1900 ,
+					duration : 380,
+				},
+		}],controller , ops)
+
+			TweenMax.set('.h9' , {
+				position:'relative',
+				y : -300,
+			})
+</script>
+</body>
+</html>
